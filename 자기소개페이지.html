@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>보안관제 포트폴리오 | 김다영</title>
+    <style>
+        :root {
+            --primary-color: #f472b6;
+            --primary-soft: #831843;
+            --primary-light: #fbcfe8;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --border-color: #374151;
+            --text-main: #f3f4f6;
+            --text-sub: #9ca3af;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 45px 20px 30px;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        header p.tagline {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+            word-break: keep-all;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .header-nav a {
+            color: var(--text-main);
+            background-color: #262626;
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .header-nav a:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-light);
+            background-color: var(--primary-soft);
+        }
+
+        section {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            color: var(--primary-light);
+        }
+
+        .scene-date {
+            display: inline-block;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 0.92rem;
+            margin-bottom: 6px;
+        }
+
+        .story-paragraph {
+            margin-bottom: 28px;
+            color: #e5e7eb;
+            word-break: keep-all;
+            font-size: 1rem;
+        }
+
+        .story-paragraph h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .capability-badge {
+            display: inline-block;
+            background-color: var(--primary-soft);
+            color: var(--primary-light);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--primary-color);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .metric-card {
+            background-color: #262626;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .metric-card .number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .metric-card .label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 6px;
+        }
+
+        .metric-card .source {
+            font-size: 0.8rem;
+            color: var(--primary-light);
+            background-color: var(--primary-soft);
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-top: 8px;
+        }
+
+        .metric-card .desc {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            margin-top: 8px;
+            word-break: keep-all;
+        }
+
+        .doc-box {
+            background-color: #18181c;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .doc-box h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+        }
+
+        .resume-table, .career-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.93rem;
+        }
+
+        .resume-table th, .resume-table td,
+        .career-table th, .career-table td {
+            border: 1px solid var(--border-color);
+            padding: 10px 12px;
+            text-align: left;
+            word-break: keep-all;
+        }
+
+        .resume-table th, .career-table th {
+            background-color: #262626;
+            color: var(--primary-light);
+            font-weight: 600;
+            width: 25%;
+        }
+
+        .career-table th {
+            text-align: center;
+        }
+
+        .career-table td {
+            vertical-align: top;
+        }
+
+        .cover-letter-text {
+            background-color: #222226;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #e5e7eb;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- 헤더 -->
+    <header>
+        <h1>김다영</h1>
+        <p class="tagline">"위기 속에서도 냉정함을 잃지 않고, 에러의 원인을 끝까지 추적해내는 보안관제 요원"</p>
+        
+        <nav class="header-nav">
+            <a href="#story-section">📖 이야기</a>
+            <a href="#metrics-section">📊 성장 기록</a>
+            <a href="#works-section">📄 대표작</a>
+            <a href="#docs-section">📝 지원 문서</a>
+        </nav>
+    </header>
+
+    <!-- 이야기 -->
+    <section id="story-section">
+        <h2>스토리: 보안관제 핵심 역량과 통제력의 기록</h2>
+        
+        <div class="story-paragraph">
+            <span class="scene-date">📍 혼란과 예외 상황이 가득했던 현장에서</span>
+            <h3>1. 분위기에 휩쓸리지 않고 객관적 통제 기준을 세우다 <span class="capability-badge">자기조절력</span></h3>
+            <p>
+                과거 부조리함과 예외 상황이 난무하던 환경에서, 분위기에 휩쓸리지 않고 상황을 객관적으로 바라보는 법을 배웠습니다[cite: 7]. 무력감에 빠지기보다 통제할 수 있는 선과 기준을 냉정하게 구분하고 스스로의 대응 경계를 세웠습니다. 이는 돌발적인 보안 침해 사고 및 대량의 경고 알람 발생 시 당황하지 않고 가이드라인에 따라 현장을 침착하게 통제하는 보안관제 요원으로서의 강력한 '자기조절력'을 형성한 기반이 되었습니다.
+            </p>
+        </div>
+
+        <div class="story-paragraph">
+            <span class="scene-date">📍 지도 사범 현장에서 느낀 과정 중심의 가치</span>
+            <h3>2. 완벽주의 강박을 내려놓고 상대 눈높이에 맞춰 소통하다 <span class="capability-badge">대인관계력</span></h3>
+            <p>
+                새로운 일에 도전하며 결과에 사로잡히기보다 스승의 조언을 통해 과정과 성장의 가치를 익혔습니다[cite: 7]. 상대방의 눈높이에 맞춰 명확하게 상황과 피드백을 전달했을 때 긍정적인 변화가 일어남을 경험했습니다. 이는 보안관제 업무 수행 중 복잡한 로그 분석 결과 및 이상 징후를 타 부서와 인포섹 팀에 직관적으로 정돈하여 보고하고 신속히 협업하는 '대인관계력'의 바탕이 되었습니다.
+            </p>
+        </div>
+
+        <div class="story-paragraph">
+            <span class="scene-date">📍 모니터 앞 생소한 코드와 신체적 통증 극복</span>
+            <h3>3. 에러와 한계를 만날 때일수록 끝까지 파고드는 집념 <span class="capability-badge">자기동기력</span></h3>
+            <p>
+                생소한 IT 및 개발 영역에 도전했을 때, 눈의 통증과 어지럼증, 수많은 오류 코드라는 장벽에 부딪혔습니다[cite: 7]. 그러나 포기하지 않고 전문 서적을 파고들며 4개월 동안 독학으로 원인을 분석하고 메워나갔습니다[cite: 7]. 모니터 가득 붉은 에러가 떠올라도 끝까지 원인을 추적하는 분석적 호기심과, 보안 공백을 허용하지 않는 '자기동기력'을 실천하고 있습니다.
+            </p>
+        </div>
+    </section>
+
+    <!-- 성장 데이터 -->
+    <section id="metrics-section">
+        <h2>성장 기록 (지속성 & 분석 완수 지표)</h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="number">100%</div>
+                <div class="label">관제/학습 일관성 (출석률)</div>
+                <span class="source">출처: attendance.json</span>
+                <p class="desc">어떠한 환경적 변수에도 흔들림 없이 정해진 자리를 지킨 성실성</p>
+            </div>
+            <div class="metric-card">
+                <div class="number">94.2%</div>
+                <div class="label">로그 및 에러 추적 완수율</div>
+                <span class="source">출처: task_list.json</span>
+                <p class="desc">복잡한 과제와 미지의 오류 앞에서도 포기하지 않고 끝까지 수행해낸 비율</p>
+            </div>
+            <div class="metric-card">
+                <div class="number">13주 연속</div>
+                <div class="label">24/7 모니터링 체력 관리</div>
+                <span class="source">출처: ritual_log.json</span>
+                <p class="desc">장시간 모니터링 시 집중력을 일정하게 유지하기 위해 매일 자기관리를 이행한 기간</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 대표작 -->
+    <section id="works-section">
+        <h2>대표작 (데이터 분석 & 관제 웹)</h2>
+        <!-- 논문 -->
+        <div class="doc-box" style="margin-bottom: 15px;">
+            <span class="capability-badge" style="background-color: #065f46; border-color: #059669;">완성작</span>
+            <h3 style="margin-top: 8px;">📄 10번 논문: 범죄 현장 정량 데이터 및 상관관계 분석 연구</h3>
+            <p style="font-size: 0.92rem; color: #d1d5db;">
+                30건의 현장 데이터 변수를 정밀하게 다변량 코딩 및 통계 분석하여, 이상 흔적 간의 높은 상관관계(r=0.977)를 입증한 연구 논문입니다[cite: 6, 7]. 이상 로그 및 징후를 정밀 관측하는 관제 역량을 반영했습니다.
+            </p>
+        </div>
+        <!-- 앱 영역 (준비 공간) -->
+        <div class="doc-box" style="margin-bottom: 0; border-style: dashed; opacity: 0.85;">
+            <span class="capability-badge" style="background-color: #374151; border-color: #4b5563;">개발 예정 / 준비 중</span>
+            <h3 style="margin-top: 8px;">📱 관제 대시보드 & 모니터링 애플리케이션</h3>
+            <p style="font-size: 0.92rem; color: #9ca3af;">
+                실시간 이상 로그 모니터링 및 관제 데이터를 시각화하는 모바일/웹 애플리케이션 프로젝트 영역입니다.
+            </p>
+        </div>
+    </section>
+
+    <!-- 제출 문서 모음 -->
+    <section id="docs-section">
+        <h2>지원 문서 (이력서 · 보안관제 자기소개서 · 경력기술서)</h2>
+
+        <!-- 이력서 -->
+        <div class="doc-box">
+            <h3>1. 이력서 (Resume)</h3>
+            <table class="resume-table">
+                <tr>
+                    <th>이름</th>
+                    <td>김다영</td>
+                    <th>연락 수단</th>
+                    <td>myemail@example.com (전용 이메일)</td>
+                </tr>
+                <tr>
+                    <th>지원 직무</th>
+                    <td colspan="3">보안관제 (Security Operations Center / SOC) 요원</td>
+                </tr>
+                <tr>
+                    <th>핵심 역량</th>
+                    <td colspan="3">
+                        • 침해 사고 발생 시 침착하게 가이드라인에 따른 대응 (자기조절력)<br>
+                        • 모니터링 이상 에러 및 트래픽의 원인을 끝까지 파고드는 추적력 (자기동기력)<br>
+                        • 관제 분석 결과 시각화 및 타 조직과의 신속·정확한 보고 능력 (대인관계력)
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 자기소개서 -->
+        <div class="doc-box">
+            <h3>2. 자기소개서 (Cover Letter)</h3>
+            <div class="cover-letter-text">
+<strong>[위기 현장의 혼란 속에서도 냉정하게 중심을 잡고 이상 원인을 추적하는 보안관제 요원, 김다영입니다]</strong>
+
+보안관제 업무의 핵심은 실시간으로 발생할 수 있는 이상 트래픽과 돌발 위협 속에서 감정적으로 동요하지 않고, 정해진 매뉴얼과 대응 기준에 따라 체계적으로 상황을 통제하는 것입니다. 예외 상황이 발생하던 환경을 경험하며, 상황을 객관적으로 파악하고 통제할 수 있는 기준을 냉정하게 세우는 훈련을 지속해 왔습니다. 이는 돌발 침해 사고 발생 시 당황하지 않고 가이드라인에 따라 현장을 침착하게 통제하는 보안관제 요원으로서의 '자기조절력'을 완성한 기반이 되었습니다.
+
+또한, 과제 수행 과정에서 스승의 피드백을 받아들여 과정 중심의 명확한 전달법을 다졌습니다. 이를 통해 관제 대시보드와 이상 징후 분석 결과를 가공하여, 인포섹 팀 및 관계 부서가 직관적으로 상황을 파악하고 대응할 수 있도록 신속·정확히 보고하는 '대인관계 및 소통 역량'을 확립했습니다.
+
+생소한 IT 및 분석 영역에 처음 도전했을 때, 신체적 피로와 복잡한 에러 코드의 장벽에 부딪혔음에도 포기하지 않고 전문 서적을 파고들며 원인을 분석해냈습니다. 24시간 지속되는 모니터링 화면 가득 이상 로그가 떠올라도 "포기하지 않고 끈질기게 추적하면 원인을 명확히 밝혀낼 수 있다"는 '자기동기력'을 실천하여 귀사의 시스템을 철통같이 수호하겠습니다.
+            </div>
+        </div>
+
+        <!-- 경력기술서 -->
+        <div class="doc-box">
+            <h3>3. 경력기술서 (Career Description)</h3>
+            <table class="career-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">핵심 역량</th>
+                        <th style="width: 25%;">경험 영역</th>
+                        <th>상황 · 행동 · 결과 (STAR 기반 요약)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;"><span class="capability-badge">자기조절력</span></td>
+                        <td>위기 및 예외 상황 통제</td>
+                        <td>
+                            <strong>[S]</strong> 불확실성이 높은 위기 상황에서 감정적 과부하가 발생할 수 있을 때<br>
+                            <strong>[A]</strong> 분위기에 휩쓸리지 않고 냉정하게 상황을 객관화하여 대응 기준을 설정함.<br>
+                            <strong>[R]</strong> 매뉴얼대로 상황을 제어하는 통제력을 입증함.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;"><span class="capability-badge">대인관계력</span></td>
+                        <td>관제 정보 전달 및 보고</td>
+                        <td>
+                            <strong>[S]</strong> 분석 수치 및 전달 방식에 대한 완벽주의적 고민에 봉착했을 때<br>
+                            <strong>[A]</strong> 피드백을 수용하여 상대 눈높이에 맞춰 정보와 가이드를 정리함.<br>
+                            <strong>[R]</strong> 관제 보고서를 직관적으로 정돈하여 전파하는 소통 체계를 완수함.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;"><span class="capability-badge">자기동기력</span></td>
+                        <td>생소한 기술/오류 파고들기</td>
+                        <td>
+                            <strong>[S]</strong> 생소한 IT 시스템 학습 중 신체적 제약 및 에러 장벽에 마주함.<br>
+                            <strong>[A]</strong> 독학으로 서적을 파고들며 원인을 지속적으로 추적하고 해결함.<br>
+                            <strong>[R]</strong> 제출 완수율 94.2%를 기록하며 이상 원인을 끝까지 밝혀내는 탐구력을 증명함.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>
